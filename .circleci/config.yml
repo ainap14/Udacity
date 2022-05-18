@@ -8,8 +8,8 @@ jobs:
     docker:
       - image: cimg/base:2020.01
     steps:
-      -checkout
-      -run:
+      - checkout
+      - run:
         name: AINA_ENV_VAR
         command: |
           echo $AINA_ENV_VAR

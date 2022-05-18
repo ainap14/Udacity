@@ -3,6 +3,11 @@
 version: 2.1
 # Use a package of configuration called an orb.
 
+workflows:
+  test-env-vars:
+    jobs:
+      - buil
+
 jobs:
   build:
     docker:
@@ -10,13 +15,8 @@ jobs:
     steps:
       - checkout
       - run:
-        name: AINA_ENV_VAR
+        name: "echo an env var that is part of our project"
         command: |
           echo $AINA_ENV_VAR
 
-# Invoke jobs via workflows
-# See: https://circleci.com/docs/2.0/configuration-reference/#workflows
-workflows:
-  test-env-vars:
-    jobs:
-      - buil
+

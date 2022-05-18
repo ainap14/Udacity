@@ -4,23 +4,19 @@ version: 2.1
 # Use a package of configuration called an orb.
 
 jobs:
-  print-hello:
+  build:
     docker:
-      - image: circleci/node:13.8.0
+      - image: cimg/base:2020.01
     steps:
-      - run: echo hello
-  print-world:
-    docker:
-      - image: circleci/node:13.8.0
-    steps:
-      - run: echo world
+      -checkout
+      -run:
+        name: AINA_ENV_VAR
+        command: |
+          echo $AINA_ENV_VAR
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
-  welcome:
+  test-env-vars:
     jobs:
-      - print-hello
-      - print-world:
-          requires:
-            - print_hello
+      - buil
